@@ -11,11 +11,9 @@ function deleteToDo(event) {
   const btn = event.target;
   const li = btn.parentNode;
   const div = li.parentNode;
-  const btnIcon = div.parentNode;
-  console.log(btnIcon);
-  toDoList.removeChild(btnIcon);
+  toDoList.removeChild(div);
   const cleanToDos = toDos.filter(function (toDo) {
-    return toDo.id !== parseInt(btnIcon.childNodes[0].id);
+    return toDo.id !== parseInt(div.id);
   });
   toDos = cleanToDos;
   totalCount.innerText = `총 할일 : ${toDos.length}개`;
@@ -30,17 +28,16 @@ function paintToDo(text) {
   const div = document.createElement("div");
   const li = document.createElement("li");
   const delBtn = document.createElement("button");
-  const delIcon = document.createElement("i");
   const span = document.createElement("span");
   const newId = toDos.length + 1;
   div.classList = "todoitems";
-  delIcon.classList.add("fas");
-  delIcon.classList.add("fa-times-circle");
+  delBtn.classList.add("fas");
+  delBtn.classList.add("fa-times-circle");
   delBtn.addEventListener("click", deleteToDo);
   span.innerText = text;
   li.appendChild(span);
-  delBtn.appendChild(delIcon);
   li.appendChild(delBtn);
+  div.id = newId;
   li.id = newId;
   div.appendChild(li);
   toDoList.appendChild(div);
