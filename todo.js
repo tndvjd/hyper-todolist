@@ -12,6 +12,7 @@ function deleteToDo(event) {
   const li = btn.parentNode;
   const div = li.parentNode;
   const btnIcon = div.parentNode;
+  console.log(btnIcon);
   toDoList.removeChild(btnIcon);
   const cleanToDos = toDos.filter(function (toDo) {
     return toDo.id !== parseInt(btnIcon.childNodes[0].id);
